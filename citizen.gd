@@ -9,6 +9,8 @@ var tweening:bool = false
 var TimeTweening:int
 signal tweenstart
 var FirstTween:bool = true
+var Hp:int = 20
+var expgiven:int = 100
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":

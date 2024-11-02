@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var player = $"../Player"
 
 @export var SPEED = 145.0
+var Hp:int = 100
+var expgiven:int = 500
 
 var player_position
 
