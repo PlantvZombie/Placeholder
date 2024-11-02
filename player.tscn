@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjh0r37iqyk3g"]
+[gd_scene load_steps=4 format=3 uid="uid://dyeirwvcaeq7d"]
 
 [ext_resource type="Texture2D" uid="uid://d2bt6csy2o2df" path="res://Images/icon.svg" id="2_my1py"]
 
@@ -32,7 +32,8 @@ func _physics_process(delta):
 radius = 60.0
 height = 150.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player2" type="CharacterBody2D" groups=["player"]]
+visible = false
 script = SubResource("GDScript_n7pmd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

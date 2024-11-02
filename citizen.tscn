@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwofri56wum6p"]
+[gd_scene load_steps=5 format=3 uid="uid://dgr1mhqc7l4gw"]
 
 [ext_resource type="Script" path="res://citizen.gd" id="1_erkt4"]
 [ext_resource type="Texture2D" uid="uid://d2bt6csy2o2df" path="res://Images/icon.svg" id="2_01vc1"]
