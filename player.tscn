@@ -284,6 +284,6 @@ shape = SubResource("CapsuleShape2D_w26sn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_f06cu")
-animation = &"Lwalk"
+animation = &"Lidle"
 
 [node name="Camera2D" type="Camera2D" parent="."]

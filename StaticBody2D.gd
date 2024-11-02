@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 var right:bool
 var atk:bool
-@onready var anim = $AnimatedSprite2D
+@onready var anim = get_node("CollisionShape2D/AnimatedSprite2D")
 var SPEED = 300.0
 
 
@@ -27,11 +27,6 @@ func _physics_process(delta):
 		elif Input.is_action_pressed("right"):
 			anim.play("Rwalk")
 			right = true
-		elif right:
-			anim.play("Rwalk")
-		else:
-			anim.play("Lwalk")
-			
 	else:
 		velocity = Vector2.ZERO
 		if right:

@@ -21,7 +21,6 @@ func _ready() -> void:
 	for i in itemname.size():
 		itemlevel.append(0)
 	itemlevel[0] = 1
-	itemlevel[1]= 1
 	for i in itemname.size():
 		Item.append(0)
 	for i in itemname.size():
