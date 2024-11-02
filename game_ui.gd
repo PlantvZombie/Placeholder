@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @onready var LevelBar = $"UI/Mbox/VBoxContainer/LevelM/exp bar"
 @onready var HealthBar = $UI/Mbox/VBoxContainer/HealthM/Health
