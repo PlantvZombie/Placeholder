@@ -1,6 +1,13 @@
 [gd_scene load_steps=2 format=3 uid="uid://bvbp445scetkk"]
 
-[ext_resource type="Script" path="res://Scripts/control.gd" id="1_r5b0n"]
+[sub_resource type="GDScript" id="GDScript_o2nuy"]
+script/source = "extends Control
+
+
+func _process(delta: float) -> void:
+	if visible:
+		get_node(\"Panel/Label\").set_text(str(get_node(\"/root/Global\").Item))
+"
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -9,7 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_r5b0n")
+script = SubResource("GDScript_o2nuy")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

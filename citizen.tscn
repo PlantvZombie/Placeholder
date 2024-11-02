@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://eso7xqhlxx25"]
+[gd_scene load_steps=5 format=3 uid="uid://bwofri56wum6p"]
 
-[ext_resource type="Script" path="res://Scripts/citizen.gd" id="1_w6fys"]
-[ext_resource type="Texture2D" uid="uid://d2bt6csy2o2df" path="res://icon.svg" id="2_mo6vy"]
+[ext_resource type="Script" path="res://citizen.gd" id="1_erkt4"]
+[ext_resource type="Texture2D" uid="uid://d2bt6csy2o2df" path="res://Images/icon.svg" id="2_01vc1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gg1e4"]
 radius = 60.0
@@ -11,13 +11,13 @@ height = 150.0
 radius = 600.0
 
 [node name="Citizen" type="CharacterBody2D"]
-script = ExtResource("1_w6fys")
+script = ExtResource("1_erkt4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_gg1e4")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-texture = ExtResource("2_mo6vy")
+texture = ExtResource("2_01vc1")
 
 [node name="Area2D" type="Area2D" parent="."]
 
