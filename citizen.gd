@@ -9,11 +9,13 @@ var tweening:bool = false
 var TimeTweening:int
 signal tweenstart
 var FirstTween:bool = true
+var randnum:int
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		random.randomize()
-		var randnum = random.randf_range(0, 100)
+		randnum = random.randi_range(0, 100)
+		print(randnum)
 		if randnum < 41:
 			run = true
 		elif randnum > 40:
@@ -32,11 +34,12 @@ func _process(_delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.y = move_toward(velocity.y, 0, SPEED)
+		move_and_slide()
 	elif !run and !cower and !tweening:
 		random.randomize()
-		var randx = random.randf_range(-100, 100) 
+		var randx = random.randi_range(-100, 100) 
 		random.randomize()
-		var randy = random.randf_range(-100, 100)
+		var randy = random.randi_range(-100, 100)
 		TimeTweening = (abs(randx) + abs(randy))/50
 		tweening = true
 		tweenstart.emit()
