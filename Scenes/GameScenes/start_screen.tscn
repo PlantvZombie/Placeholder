@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://ddgpnhcc3osoe"]
 
-[ext_resource type="Theme" uid="uid://dl6w3rbkh8rf7" path="res://UI/Themes/UiTheme.tres" id="1_ei0uj"]
-[ext_resource type="Script" path="res://UI/Scripts/play_button.gd" id="2_3cylw"]
-[ext_resource type="Script" path="res://UI/Scripts/ui.gd" id="2_4tpya"]
-[ext_resource type="Script" path="res://UI/Scripts/QuitSettings.gd" id="2_vkms3"]
-[ext_resource type="Texture2D" uid="uid://niujoyxehpbj" path="res://UI/Images/dexmj5e-90063058-cb26-404b-bbde-09ce4c5456d7.png" id="3_o5cg3"]
+[ext_resource type="Theme" uid="uid://dl6w3rbkh8rf7" path="res://Themes/UiTheme.tres" id="1_ei0uj"]
+[ext_resource type="Script" path="res://Scripts/play_button.gd" id="2_3cylw"]
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="2_4tpya"]
+[ext_resource type="Script" path="res://Scripts/QuitSettings.gd" id="2_vkms3"]
+[ext_resource type="Texture2D" uid="uid://niujoyxehpbj" path="res://Images/dexmj5e-90063058-cb26-404b-bbde-09ce4c5456d7.png" id="3_o5cg3"]
 [ext_resource type="Script" path="res://UI/setting_button.gd" id="3_tsmqc"]
-[ext_resource type="Script" path="res://UI/Scripts/quit_button.gd" id="4_r00ob"]
+[ext_resource type="Script" path="res://Scripts/quit_button.gd" id="4_r00ob"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_inpyc"]
 size = Vector2(100, 50)
