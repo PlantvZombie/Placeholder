@@ -1,9 +1,6 @@
 extends CharacterBody2D
 
 
-var right:bool
-var atk:bool
-@onready var anim = get_node("CollisionShape2D/AnimatedSprite2D")
 var SPEED = 300.0
 
 
@@ -21,20 +18,8 @@ func _physics_process(delta):
 		if sqrt(pow(velocity.x, 2) + pow(velocity.y, 2)) > 300: 
 			velocity.x = direction * SPEED * (sqrt(2)/2)
 			velocity.y = direction2 * SPEED * (sqrt(2)/2)
-		if Input.is_action_pressed("left"):
-			anim.play("Lwalk")
-			right = false
-		elif Input.is_action_pressed("right"):
-			anim.play("Rwalk")
-			right = true
 	else:
-		velocity = Vector2.ZERO
-		if right:
-			anim.play("Ridle")
-		else:
-			anim.play("Lidle")
-	if atk and right:
-		anim.play("Ratk")
-	elif atk:
-		anim.play("Latk")
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+
 	move_and_slide()
