@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://world.gd" id="1_ceaot"]
 [ext_resource type="PackedScene" uid="uid://dyeirwvcaeq7d" path="res://player.tscn" id="1_ri842"]
 [ext_resource type="PackedScene" uid="uid://dgr1mhqc7l4gw" path="res://citizen.tscn" id="2_6rb8a"]
-[ext_resource type="PackedScene" path="res://control.tscn" id="3_v3k7y"]
+[ext_resource type="PackedScene" uid="uid://bvbp445scetkk" path="res://control.tscn" id="3_v3k7y"]
 [ext_resource type="PackedScene" uid="uid://cicgi2c20py2i" path="res://soldier.tscn" id="5_mfiqw"]
 [ext_resource type="PackedScene" uid="uid://dovx70pyuy7ju" path="res://game_ui.tscn" id="6_3mqe1"]
 [ext_resource type="PackedScene" uid="uid://1q6a6ynst0c0" path="res://soldier_range.tscn" id="6_tr03k"]
@@ -43,12 +43,6 @@ SoldierMelee = ExtResource("5_mfiqw")
 SoldierRanged = ExtResource("6_tr03k")
 
 [node name="GameUI" parent="." instance=ExtResource("6_3mqe1")]
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-grow_vertical = 1
 script = null
 
 [node name="Inventory2" parent="." instance=ExtResource("3_v3k7y")]
