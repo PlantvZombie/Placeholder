@@ -14,7 +14,12 @@ config/name="Placeholder"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
-[input]
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 
 left={
 "deadzone": 0.5,

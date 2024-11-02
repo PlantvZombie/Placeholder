@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddgpnhcc3osoe"]
+
+[ext_resource type="Theme" uid="uid://dl6w3rbkh8rf7" path="res://UI/Themes/UiTheme.tres" id="1_mwluk"]
+[ext_resource type="Script" path="res://UI/Scripts/play_button.gd" id="2_rcvqp"]
+[ext_resource type="Script" path="res://UI/setting_button.gd" id="3_acaec"]
+[ext_resource type="Script" path="res://UI/Scripts/quit_button.gd" id="4_bvqh7"]
+[ext_resource type="Script" path="res://settings.gd" id="4_w5w7o"]
+
+[node name="Start Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mwluk")
+
+[node name="Bg" type="ColorRect" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mwluk")
+
+[node name="Buttons" type="VBoxContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = ExtResource("1_mwluk")
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Play" type="MarginContainer" parent="CanvasLayer/UI/Buttons"]
+layout_mode = 2
+theme = ExtResource("1_mwluk")
+theme_override_constants/margin_left = 375
+theme_override_constants/margin_right = 375
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/UI/Buttons/Play"]
+layout_mode = 2
+theme = ExtResource("1_mwluk")
+theme_override_font_sizes/font_size = 40
+text = "Play"
+script = ExtResource("2_rcvqp")
+
+[node name="Settings" type="MarginContainer" parent="CanvasLayer/UI/Buttons"]
+layout_mode = 2
+theme = ExtResource("1_mwluk")
+theme_override_constants/margin_left = 450
+theme_override_constants/margin_right = 450
+
+[node name="SettingButton" type="Button" parent="CanvasLayer/UI/Buttons/Settings"]
+layout_mode = 2
+theme = ExtResource("1_mwluk")
+text = "Settings"
+script = ExtResource("3_acaec")
+
+[node name="Quit" type="MarginContainer" parent="CanvasLayer/UI/Buttons"]
+layout_mode = 2
+theme = ExtResource("1_mwluk")
+theme_override_constants/margin_left = 450
+theme_override_constants/margin_right = 450
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/UI/Buttons/Quit"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_mwluk")
+text = "Quit"
+script = ExtResource("4_bvqh7")
+
+[node name="SettingUI" type="VBoxContainer" parent="CanvasLayer/UI/Buttons"]
+layout_mode = 2
+script = ExtResource("4_w5w7o")
+
+[connection signal="pressed" from="CanvasLayer/UI/Buttons/Play/PlayButton" to="CanvasLayer/UI/Buttons/Play/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Buttons/Settings/SettingButton" to="CanvasLayer/UI/Buttons/Settings/SettingButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Buttons/Quit/QuitButton" to="CanvasLayer/UI/Buttons/Quit/QuitButton" method="_on_pressed"]
