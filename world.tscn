@@ -1,38 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfbkhnsbchmqr"]
+[gd_scene load_steps=8 format=3 uid="uid://cfbkhnsbchmqr"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_ceaot"]
-[ext_resource type="PackedScene" uid="uid://dyeirwvcaeq7d" path="res://player.tscn" id="1_ri842"]
-[ext_resource type="PackedScene" uid="uid://dgr1mhqc7l4gw" path="res://citizen.tscn" id="2_6rb8a"]
+[ext_resource type="PackedScene" uid="uid://cjh0r37iqyk3g" path="res://player.tscn" id="1_ri842"]
+[ext_resource type="PackedScene" uid="uid://bwofri56wum6p" path="res://citizen.tscn" id="2_6rb8a"]
 [ext_resource type="PackedScene" uid="uid://bvbp445scetkk" path="res://control.tscn" id="3_v3k7y"]
-[ext_resource type="PackedScene" uid="uid://cicgi2c20py2i" path="res://soldier.tscn" id="5_mfiqw"]
-[ext_resource type="PackedScene" uid="uid://dovx70pyuy7ju" path="res://game_ui.tscn" id="6_3mqe1"]
-[ext_resource type="PackedScene" uid="uid://1q6a6ynst0c0" path="res://soldier_range.tscn" id="6_tr03k"]
-
-[sub_resource type="GDScript" id="GDScript_n7pmd"]
-script/source = "extends CharacterBody2D
-
-
-const SPEED = 300.0
-
-
-func _physics_process(delta):
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis(\"left\", \"right\")
-	var direction2 = Input.get_axis(\"up\", \"down\")
-	if direction or direction2:
-		velocity.x = direction * SPEED
-		velocity.y = direction2 * SPEED
-		if sqrt(pow(velocity.x, 2) + pow(velocity.y, 2)) > 300: 
-			velocity.x = direction * SPEED * (sqrt(2)/2)
-			velocity.y = direction2 * SPEED * (sqrt(2)/2)
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-
-	move_and_slide()
-"
+[ext_resource type="PackedScene" path="res://soldier.tscn" id="5_mfiqw"]
+[ext_resource type="PackedScene" path="res://game_ui.tscn" id="6_3mqe1"]
+[ext_resource type="PackedScene" path="res://soldier_range.tscn" id="6_tr03k"]
 
 [node name="World" type="Node2D"]
 position = Vector2(24, -12)
@@ -52,11 +26,6 @@ offset_top = 160.0
 offset_right = 89.0
 offset_bottom = 160.0
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("1_ri842")]
-position = Vector2(80, 160)
-collision_mask = 4
-script = SubResource("GDScript_n7pmd")
-
 [node name="Citizen2" parent="." instance=ExtResource("2_6rb8a")]
 position = Vector2(1364.7, 323.403)
 collision_layer = 3
@@ -68,3 +37,7 @@ SPEED = 160.0
 
 [node name="SoldierRange2" parent="." instance=ExtResource("6_tr03k")]
 SPEED = 160.0
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_ri842")]
+position = Vector2(342, 582)
+collision_mask = 4
