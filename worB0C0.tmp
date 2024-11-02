@@ -1,13 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://cfbkhnsbchmqr"]
 
-
 [ext_resource type="Script" path="res://world.gd" id="1_ceaot"]
 [ext_resource type="PackedScene" uid="uid://dyeirwvcaeq7d" path="res://player.tscn" id="1_ri842"]
 [ext_resource type="PackedScene" uid="uid://dgr1mhqc7l4gw" path="res://citizen.tscn" id="2_6rb8a"]
 [ext_resource type="PackedScene" path="res://control.tscn" id="3_v3k7y"]
-[ext_resource type="PackedScene" uid="uid://cicgi2c20py2i" path="res://soldier.tscn" id="5_mfiqw"]
-[ext_resource type="PackedScene" uid="uid://dovx70pyuy7ju" path="res://game_ui.tscn" id="6_3mqe1"]
-[ext_resource type="PackedScene" uid="uid://1q6a6ynst0c0" path="res://soldier_range.tscn" id="6_tr03k"]
+[ext_resource type="Script" path="res://soldier.gd" id="5_n5raj"]
+[ext_resource type="Texture2D" uid="uid://d2bt6csy2o2df" path="res://icon.svg" id="6_ocr2f"]
 
 [sub_resource type="GDScript" id="GDScript_n7pmd"]
 script/source = "extends CharacterBody2D
@@ -35,22 +33,21 @@ func _physics_process(delta):
 	move_and_slide()
 "
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fm1gr"]
+size = Vector2(124, 124)
+
 [node name="World" type="Node2D"]
 position = Vector2(24, -12)
 script = ExtResource("1_ceaot")
-Player = ExtResource("1_ri842")
-Citizen2 = ExtResource("2_6rb8a")
-SoldierMelee = ExtResource("5_mfiqw")
-SoldierRanged = ExtResource("6_tr03k")
 
-[node name="GameUI" parent="." instance=ExtResource("6_3mqe1")]
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-grow_vertical = 1
-script = null
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_ri842")]
+position = Vector2(80, 160)
+collision_mask = 1
+script = SubResource("GDScript_n7pmd")
+
+[node name="Citizen2" parent="." instance=ExtResource("2_6rb8a")]
+position = Vector2(1364.7, 323.403)
+collision_mask = 1
 
 [node name="Inventory2" parent="." instance=ExtResource("3_v3k7y")]
 visible = false
@@ -59,19 +56,13 @@ offset_top = 160.0
 offset_right = 89.0
 offset_bottom = 160.0
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("1_ri842")]
-position = Vector2(80, 160)
-collision_mask = 4
-script = SubResource("GDScript_n7pmd")
+[node name="Soldier" type="CharacterBody2D" parent="."]
+position = Vector2(225, 193)
+script = ExtResource("5_n5raj")
 
-[node name="Citizen2" parent="." instance=ExtResource("2_6rb8a")]
-position = Vector2(1364.7, 323.403)
-collision_layer = 3
+[node name="Sprite2D" type="Sprite2D" parent="Soldier"]
+texture = ExtResource("6_ocr2f")
 
-[node name="SoldierMelee" parent="." instance=ExtResource("5_mfiqw")]
-collision_layer = 3
-collision_mask = 2
-SPEED = 160.0
-
-[node name="SoldierRange2" parent="." instance=ExtResource("6_tr03k")]
-SPEED = 160.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Soldier"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_fm1gr")

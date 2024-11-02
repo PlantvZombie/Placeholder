@@ -1,12 +1,16 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
 var right:bool
 var atk:bool
 @onready var anim = $AnimatedSprite2D
-func _physics_process(delta):
+var SPEED = 300.0
 
+
+func _physics_process(delta):
+	if Global.leveled:
+		SPEED = SPEED*(1 + ((15/100)*(Global.itemlevel[5])))
+		Global.Attacks = Global.Attacks + Global.itemlevel[3]
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("left", "right")

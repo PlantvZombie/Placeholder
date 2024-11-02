@@ -1,11 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://dgr1mhqc7l4gw"]
 
 [ext_resource type="Script" path="res://citizen.gd" id="1_erkt4"]
-[ext_resource type="Texture2D" uid="uid://d2bt6csy2o2df" path="res://icon.svg" id="2_01vc1"]
+[ext_resource type="Texture2D" uid="uid://c0egrmiijceg6" path="res://icon.svg" id="2_01vc1"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gg1e4"]
-radius = 60.0
-height = 150.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kuyva"]
+size = Vector2(127, 127.25)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v4eh4"]
 radius = 600.0
@@ -15,7 +14,8 @@ collision_mask = 2
 script = ExtResource("1_erkt4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_gg1e4")
+position = Vector2(0, -0.625)
+shape = SubResource("RectangleShape2D_kuyva")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
 texture = ExtResource("2_01vc1")
