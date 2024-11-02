@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dsc5emymrujqc" path="res://Images/01_Flat_Theme/Spritesheets/E-Sheetwa.png" id="2_yf4eu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_saysw"]
-radius = 60.0
-height = 150.0
+radius = 34.0
+height = 92.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wf6dp"]
 atlas = ExtResource("2_yf4eu")
@@ -281,9 +281,9 @@ script = ExtResource("1_ttaav")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_saysw")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_f06cu")
 animation = &"Lwalk"
+
+[node name="Camera2D" type="Camera2D" parent="."]

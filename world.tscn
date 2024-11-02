@@ -1,11 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfbkhnsbchmqr"]
+[gd_scene load_steps=5 format=3 uid="uid://cfbkhnsbchmqr"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_fpks8"]
 [ext_resource type="PackedScene" uid="uid://cjh0r37iqyk3g" path="res://player.tscn" id="1_o675a"]
 [ext_resource type="PackedScene" path="res://citizen.tscn" id="2_6rb8a"]
 [ext_resource type="PackedScene" path="res://control.tscn" id="3_v3k7y"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_akdch"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_fpks8")
@@ -19,8 +17,3 @@ position = Vector2(965, 121)
 
 [node name="Inventory" parent="." instance=ExtResource("3_v3k7y")]
 visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(94.25, 117.25)
-scale = Vector2(189.5, 235.5)
-texture = SubResource("PlaceholderTexture2D_akdch")
