@@ -1,19 +1,67 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfbkhnsbchmqr"]
+[gd_scene load_steps=9 format=3 uid="uid://cfbkhnsbchmqr"]
 
-[ext_resource type="Script" path="res://world.gd" id="1_fpks8"]
-[ext_resource type="PackedScene" uid="uid://cjh0r37iqyk3g" path="res://player.tscn" id="1_o675a"]
-[ext_resource type="PackedScene" uid="uid://bwofri56wum6p" path="res://citizen.tscn" id="2_6rb8a"]
-[ext_resource type="PackedScene" uid="uid://bvbp445scetkk" path="res://control.tscn" id="3_v3k7y"]
+[ext_resource type="Script" path="res://world.gd" id="1_ceaot"]
+[ext_resource type="PackedScene" uid="uid://dyeirwvcaeq7d" path="res://player.tscn" id="1_ri842"]
+[ext_resource type="PackedScene" uid="uid://dgr1mhqc7l4gw" path="res://citizen.tscn" id="2_6rb8a"]
+[ext_resource type="PackedScene" path="res://control.tscn" id="3_v3k7y"]
+[ext_resource type="Script" path="res://soldier.gd" id="5_n5raj"]
+[ext_resource type="Texture2D" uid="uid://d2bt6csy2o2df" path="res://icon.svg" id="6_ocr2f"]
+
+[sub_resource type="GDScript" id="GDScript_n7pmd"]
+script/source = "extends CharacterBody2D
+
+
+const SPEED = 300.0
+
+
+func _physics_process(delta):
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction = Input.get_axis(\"left\", \"right\")
+	var direction2 = Input.get_axis(\"up\", \"down\")
+	if direction or direction2:
+		velocity.x = direction * SPEED
+		velocity.y = direction2 * SPEED
+		if sqrt(pow(velocity.x, 2) + pow(velocity.y, 2)) > 300: 
+			velocity.x = direction * SPEED * (sqrt(2)/2)
+			velocity.y = direction2 * SPEED * (sqrt(2)/2)
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+
+	move_and_slide()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fm1gr"]
+size = Vector2(124, 124)
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_fpks8")
+position = Vector2(24, -12)
+script = ExtResource("1_ceaot")
 
-[node name="Player" parent="." instance=ExtResource("1_o675a")]
-z_index = 1
-position = Vector2(179, 504)
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_ri842")]
+position = Vector2(80, 160)
+collision_mask = 1
+script = SubResource("GDScript_n7pmd")
 
-[node name="Citizen" parent="." instance=ExtResource("2_6rb8a")]
-position = Vector2(965, 121)
+[node name="Citizen2" parent="." instance=ExtResource("2_6rb8a")]
+position = Vector2(1364.7, 323.403)
+collision_mask = 1
 
-[node name="Inventory" parent="." instance=ExtResource("3_v3k7y")]
+[node name="Inventory2" parent="." instance=ExtResource("3_v3k7y")]
 visible = false
+offset_left = 89.0
+offset_top = 160.0
+offset_right = 89.0
+offset_bottom = 160.0
+
+[node name="Soldier" type="CharacterBody2D" parent="."]
+script = ExtResource("5_n5raj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Soldier"]
+texture = ExtResource("6_ocr2f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Soldier"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_fm1gr")

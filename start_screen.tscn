@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddgpnhcc3osoe"]
+[gd_scene load_steps=10 format=3 uid="uid://d14yni08ta6pi"]
 
 [ext_resource type="Theme" uid="uid://dl6w3rbkh8rf7" path="res://Themes/UiTheme.tres" id="1_ejstc"]
 [ext_resource type="Script" path="res://ui.gd" id="2_87hye"]
@@ -123,7 +123,7 @@ layout_mode = 2
 
 [node name="2" type="MarginContainer" parent="UI/SettingBox/VBoxContainer/General/Buttons"]
 layout_mode = 2
-theme_override_constants/margin_right = 515
+theme_override_constants/margin_right = 900
 
 [node name="CheckBox" type="CheckBox" parent="UI/SettingBox/VBoxContainer/General/Buttons/2"]
 layout_mode = 2
@@ -148,8 +148,8 @@ alignment = 1
 [node name="Play" type="MarginContainer" parent="UI/Buttons"]
 layout_mode = 2
 theme = ExtResource("1_ejstc")
-theme_override_constants/margin_left = 375
-theme_override_constants/margin_right = 375
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_right = 500
 
 [node name="PlayButton" type="Button" parent="UI/Buttons/Play"]
 layout_mode = 2
@@ -161,8 +161,8 @@ script = ExtResource("5_be87k")
 [node name="Settings" type="MarginContainer" parent="UI/Buttons"]
 layout_mode = 2
 theme = ExtResource("1_ejstc")
-theme_override_constants/margin_left = 450
-theme_override_constants/margin_right = 450
+theme_override_constants/margin_left = 700
+theme_override_constants/margin_right = 700
 
 [node name="SettingButton" type="Button" parent="UI/Buttons/Settings"]
 layout_mode = 2
@@ -173,8 +173,8 @@ script = ExtResource("6_iajj5")
 [node name="Quit" type="MarginContainer" parent="UI/Buttons"]
 layout_mode = 2
 theme = ExtResource("1_ejstc")
-theme_override_constants/margin_left = 450
-theme_override_constants/margin_right = 450
+theme_override_constants/margin_left = 700
+theme_override_constants/margin_right = 700
 
 [node name="QuitButton" type="Button" parent="UI/Buttons/Quit"]
 layout_mode = 2
