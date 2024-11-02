@@ -12,8 +12,8 @@ script = ExtResource("1_fpks8")
 z_index = 1
 position = Vector2(179, 504)
 
-[node name="Citizen" parent="." instance=ExtResource("2_6rb8a")]
-position = Vector2(965, 121)
-
 [node name="Inventory" parent="." instance=ExtResource("3_v3k7y")]
 visible = false
+
+[node name="Citizen" parent="." instance=ExtResource("2_6rb8a")]
+position = Vector2(1062, 85)
