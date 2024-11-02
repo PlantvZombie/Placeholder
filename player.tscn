@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://StaticBody2D.gd" id="1_ttaav"]
 [ext_resource type="Texture2D" uid="uid://dsc5emymrujqc" path="res://Images/01_Flat_Theme/Spritesheets/E-Sheetwa.png" id="2_yf4eu"]
 
+<<<<<<< HEAD
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w26sn"]
 radius = 31.0
 height = 86.0
@@ -41,6 +42,10 @@ func _physics_process(delta):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_flcwn"]
 size = Vector2(125, 127)
 >>>>>>> Stashed changes
+=======
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_flcwn"]
+size = Vector2(125, 127)
+>>>>>>> parent of aa2b971 (Update player.tscn)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wf6dp"]
 atlas = ExtResource("2_yf4eu")
@@ -314,7 +319,7 @@ collision_mask = 2
 script = ExtResource("1_ttaav")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_w26sn")
+shape = SubResource("RectangleShape2D_flcwn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
 scale = Vector2(3, 3)
