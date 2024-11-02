@@ -1,6 +1,5 @@
 [gd_scene load_steps=9 format=3 uid="uid://cfbkhnsbchmqr"]
 
-
 [ext_resource type="Script" path="res://world.gd" id="1_ceaot"]
 [ext_resource type="PackedScene" uid="uid://dyeirwvcaeq7d" path="res://player.tscn" id="1_ri842"]
 [ext_resource type="PackedScene" uid="uid://dgr1mhqc7l4gw" path="res://citizen.tscn" id="2_6rb8a"]
@@ -43,14 +42,7 @@ Citizen2 = ExtResource("2_6rb8a")
 SoldierMelee = ExtResource("5_mfiqw")
 SoldierRanged = ExtResource("6_tr03k")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
-
-[node name="GameUI" parent="CanvasLayer" instance=ExtResource("6_3mqe1")]
-offset_left = -856.0
-offset_top = -392.0
-offset_right = -856.0
-offset_bottom = -392.0
+[node name="GameUI" parent="." instance=ExtResource("6_3mqe1")]
 script = null
 
 [node name="Inventory2" parent="." instance=ExtResource("3_v3k7y")]
@@ -61,6 +53,7 @@ offset_right = 89.0
 offset_bottom = 160.0
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_ri842")]
+unique_name_in_owner = true
 position = Vector2(80, 160)
 collision_mask = 4
 script = SubResource("GDScript_n7pmd")
