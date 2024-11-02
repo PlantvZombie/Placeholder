@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://tfb5m3rp3cmw"]
 
-[ext_resource type="Script" path="res://control.gd" id="1_6rjrk"]
+[ext_resource type="Script" path="res://control.gd" id="1_r5b0n"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_6rjrk")
+script = ExtResource("1_r5b0n")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
