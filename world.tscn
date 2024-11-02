@@ -42,13 +42,14 @@ Citizen2 = ExtResource("2_6rb8a")
 SoldierMelee = ExtResource("5_mfiqw")
 SoldierRanged = ExtResource("6_tr03k")
 
-[node name="GameUI" parent="." instance=ExtResource("6_3mqe1")]
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-grow_vertical = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource("6_3mqe1")]
+offset_left = -856.0
+offset_top = -392.0
+offset_right = -856.0
+offset_bottom = -392.0
 script = null
 
 [node name="Inventory2" parent="." instance=ExtResource("3_v3k7y")]
