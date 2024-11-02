@@ -4,6 +4,11 @@ var random = RandomNumberGenerator.new()
 var cower:bool = false
 var run:bool = false
 const SPEED = 150
+@onready var tween = create_tween()
+var tweening:bool = false
+var TimeTweening:int
+signal tweenstart
+var FirstTween:bool = true
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
@@ -24,6 +29,29 @@ func _process(_delta: float) -> void:
 			if sqrt(pow(velocity.x, 2) + pow(velocity.y, 2)) > 300: 
 				velocity.x = direction * SPEED * (sqrt(2)/2)
 				velocity.y = direction2 * SPEED * (sqrt(2)/2)
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.y = move_toward(velocity.y, 0, SPEED)
+	elif !run and !cower and !tweening:
+		random.randomize()
+		var randx = random.randf_range(-100, 100) 
+		random.randomize()
+		var randy = random.randf_range(-100, 100)
+		TimeTweening = (abs(randx) + abs(randy))/100
+		tweening = true
+		tweenstart.emit()
+		if !FirstTween:
+			tween = create_tween()
+		tween.tween_property(self, "position", Vector2(position.x + randx, position.y + randy), TimeTweening)
+		FirstTween = false
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.name == "Player":
+		cower = false
+		run = false
+
+
+func _on_tweenstart() -> void:
+	await get_tree().create_timer(TimeTweening).timeout
+	tweening = false
