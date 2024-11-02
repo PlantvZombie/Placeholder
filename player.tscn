@@ -1,39 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyeirwvcaeq7d"]
+[gd_scene load_steps=4 format=3 uid="uid://cjh0r37iqyk3g"]
 
+[ext_resource type="Script" path="res://StaticBody2D.gd" id="1_ttaav"]
 [ext_resource type="Texture2D" uid="uid://c0egrmiijceg6" path="res://icon.svg" id="2_my1py"]
-
-[sub_resource type="GDScript" id="GDScript_8wjcx"]
-script/source = "extends CharacterBody2D
-
-
-const SPEED = 300.0
-
-
-func _physics_process(delta):
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis(\"left\", \"right\")
-	var direction2 = Input.get_axis(\"up\", \"down\")
-	if direction or direction2:
-		velocity.x = direction * SPEED
-		velocity.y = direction2 * SPEED
-		if sqrt(pow(velocity.x, 2) + pow(velocity.y, 2)) > 300: 
-			velocity.x = direction * SPEED * (sqrt(2)/2)
-			velocity.y = direction2 * SPEED * (sqrt(2)/2)
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-
-	move_and_slide()
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_flcwn"]
 size = Vector2(125, 127)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
-script = SubResource("GDScript_8wjcx")
+script = ExtResource("1_ttaav")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_flcwn")
