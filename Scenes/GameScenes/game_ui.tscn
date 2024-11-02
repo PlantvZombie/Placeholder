@@ -1,0 +1,107 @@
+[gd_scene load_steps=9 format=3 uid="uid://dovx70pyuy7ju"]
+
+[ext_resource type="Script" path="res://Scripts/game_ui.gd" id="1_wsels"]
+[ext_resource type="Texture2D" uid="uid://cca5j416lgggw" path="res://bar2.png" id="2_5tf7p"]
+[ext_resource type="Texture2D" uid="uid://fqvc0emlp8r4" path="res://under2.png" id="2_j6j2j"]
+[ext_resource type="Texture2D" uid="uid://cqka0mbob72i5" path="res://bar.png" id="4_gqfrg"]
+[ext_resource type="Texture2D" uid="uid://2ikblnpms1y" path="res://under.png" id="4_tbe00"]
+[ext_resource type="Texture2D" uid="uid://byvgyjxxhlesw" path="res://Images/01_Flat_Theme/Sprite-0009.png" id="6_r3usq"]
+[ext_resource type="Texture2D" uid="uid://duob28365y88m" path="res://Images/01_Flat_Theme/Sprite-0010.png" id="7_m3ssb"]
+[ext_resource type="Texture2D" uid="uid://bnrkuvdb2ydm" path="res://Images/01_Flat_Theme/Sprite-0011.png" id="8_pf4hn"]
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wsels")
+
+[node name="UI" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Mbox" type="MarginContainer" parent="UI"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Mbox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="LevelM" type="MarginContainer" parent="UI/Mbox/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 7
+
+[node name="exp bar" type="TextureProgressBar" parent="UI/Mbox/VBoxContainer/LevelM"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 70.0
+texture_under = ExtResource("2_5tf7p")
+texture_over = ExtResource("2_j6j2j")
+texture_progress = ExtResource("2_5tf7p")
+tint_under = Color(0, 0.666667, 1, 1)
+
+[node name="LevelText" type="Label" parent="UI/Mbox/VBoxContainer/LevelM/exp bar"]
+layout_mode = 2
+anchor_top = 0.276923
+anchor_right = 0.992896
+anchor_bottom = 0.723077
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level: 0"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthM" type="MarginContainer" parent="UI/Mbox/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 7
+
+[node name="Health" type="TextureProgressBar" parent="UI/Mbox/VBoxContainer/HealthM"]
+layout_mode = 2
+size_flags_vertical = 0
+value = 70.0
+texture_under = ExtResource("4_gqfrg")
+texture_over = ExtResource("4_tbe00")
+texture_progress = ExtResource("4_gqfrg")
+tint_under = Color(0.344816, 0, 0.026899, 1)
+tint_progress = Color(0.84956, 3.29696e-06, 1.54018e-06, 1)
+
+[node name="MBox2" type="MarginContainer" parent="UI"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 16
+
+[node name="TextureButton" type="TextureButton" parent="UI/MBox2"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("6_r3usq")
+texture_pressed = ExtResource("7_m3ssb")
+texture_hover = ExtResource("8_pf4hn")
+stretch_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

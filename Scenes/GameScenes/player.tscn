@@ -17,3 +17,5 @@ shape = SubResource("CapsuleShape2D_saysw")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
 texture = ExtResource("2_my1py")
+
+[node name="Camera2D" type="Camera2D" parent="StaticBody2D"]
