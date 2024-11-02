@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 
 func _on_pressed() -> void:
 	#drag the actual game scene below in here 
-	get_tree().change_scene_to_file("res://Scenes/GameScenes/player.tscn")
+	get_tree().change_scene_to_file("res://world.tscn")

@@ -1,14 +1,23 @@
 extends Node
-
+class_name variables
+#Item Variables
 var itemname:Array
 var itemlevel:Array
 var Item:Array
 signal LevelUp
 var leveled:bool = false
+var maxplayerhp = 100
+var playerhealth = 70
+var neededexp = 1000
+var exp = 145
 
 func _ready() -> void:
-	connect("LevelUp", Level)
-	itemname = ["Baton", "Taser", "Drones", "Simulated Arm", "Firewall"]
+	var maxplayerhp = 100
+	var playerhealth = 70
+	var neededexp = 1000
+	var exp = 145
+  connect("LevelUp", Level)
+	itemname = ["Baton", "Taser", "Drones", "Simulated Arm", "Firewall"]>>>>>>> main
 	for i in itemname.size():
 		itemlevel.append(0)
 	itemlevel[0] = 1
