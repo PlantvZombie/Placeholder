@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var SLOW_SPEED = 0.6
 @export var firerate = 2.5
 @export var Bullet : PackedScene
+var Hp:int = 50
+var expgiven:int = 500
 
 
 var canShoot = true
