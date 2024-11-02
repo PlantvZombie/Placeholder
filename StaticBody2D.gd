@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-
+var right
 
 func _physics_process(delta):
 
@@ -17,7 +17,5 @@ func _physics_process(delta):
 			velocity.x = direction * SPEED * (sqrt(2)/2)
 			velocity.y = direction2 * SPEED * (sqrt(2)/2)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-
+		velocity = Vector2.ZERO
 	move_and_slide()
