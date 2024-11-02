@@ -39,5 +39,5 @@ SPEED = 160.0
 SPEED = 160.0
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_ri842")]
-position = Vector2(342, 582)
+position = Vector2(887, 571)
 collision_mask = 4
