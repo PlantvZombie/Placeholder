@@ -1,9 +1,4 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dl6w3rbkh8rf7"]
-
-[ext_resource type="Texture2D" uid="uid://ds6eon7yrt54a" path="res://UI/Images/01_Flat_Theme/Sprites/UI_Flat_InputField01a.png" id="1_cnnmd"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vwh42"]
-texture = ExtResource("1_cnnmd")
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dl6w3rbkh8rf7"]
 
 [sub_resource type="FontFile" id="FontFile_yx23m"]
 cache/0/40/0/ascent = 0.0
@@ -19,5 +14,3 @@ cache/0/16/0/scale = 1.0
 
 [resource]
 default_font = SubResource("FontFile_yx23m")
-Button/styles/normal = SubResource("StyleBoxTexture_vwh42")
-Button/styles/pressed = null
