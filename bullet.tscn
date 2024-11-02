@@ -4,13 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://bv6ul865kgqhw" path="res://BulletEnemy.png" id="1_u7p7i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rxxyh"]
-radius = 2.99998
-height = 7.99995
+radius = 12.9999
+height = 38.0135
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_4leyu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
 texture = ExtResource("1_u7p7i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

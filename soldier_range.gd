@@ -1,32 +1,60 @@
 extends CharacterBody2D
 
-
+@onready var player = $"../Player"
 @onready var timer = $ShootTimer
 
-@export var firerate = 0.5
+@export var SPEED = 145.0
+@export var SLOW_SPEED = 0.6
+@export var firerate = 2.5
 @export var Bullet : PackedScene
-@onready var player = $"../Player"
 
+
+var canShoot = true
+var canMove = true
 var player_position
-var SPEED = 145.0
+
+
+
+func _ready() -> void:
+	timer.wait_time = firerate
 
 func _physics_process(delta: float) -> void:
-	player_position = player.position
-	if position.distance_to(player_position) >= 10:
-		velocity = position.direction_to(player_position) * SPEED
-		if position.distance_to(player_position) < 10:
-			velocity = Vector2.ZERO
+	if canMove == true:
+		player_position = player.position
+		if position.distance_to(player_position) >= 10:
+			velocity = position.direction_to(player_position) * SPEED
+			if position.distance_to(player_position) < 10:
+				velocity = Vector2.ZERO
+	elif canMove == false:
+		player_position = player.position
+		if position.distance_to(player_position) >= 10:
+			velocity = position.direction_to(player_position) * (SPEED * SLOW_SPEED)
+			if position.distance_to(player_position) < 10:
+				velocity = Vector2.ZERO
 	move_and_slide()
-	if timer.time_left <= 0:
-		timer.stop()
 
 
 func shoot():
-	var b = Bullet.instantiate()
-	owner.add_child(b)
-	b.transform = $Muzzle.global_transform
+	if timer.wait_time >= 0:
+		timer.stop()
+		var b = Bullet.instantiate()
+		$CollisionShape/Muzzle.look_at(player.position)
+		owner.add_child(b)
+		b.transform = $CollisionShape/Muzzle.global_transform
+		timer.start(firerate)
+
+func _on_shoot_timer_timeout() -> void:
+	if canShoot:
+		shoot()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player") && timer.is_stopped() == true:
-		shoot()
+	if body.is_in_group("player"):
+		canShoot = true
+		canMove = false
 		timer.start(firerate)
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		canShoot = false
+		canMove = true
+		timer.stop()

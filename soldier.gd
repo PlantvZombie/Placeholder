@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
 @onready var player = $"../Player"
+
+@export var SPEED = 145.0
+
 var player_position
-var SPEED = 145.0
 
 func _physics_process(delta: float) -> void:
 	player_position = player.position

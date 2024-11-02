@@ -1,12 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfbkhnsbchmqr"]
+[gd_scene load_steps=9 format=3 uid="uid://cfbkhnsbchmqr"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_ceaot"]
 [ext_resource type="PackedScene" uid="uid://dyeirwvcaeq7d" path="res://player.tscn" id="1_ri842"]
 [ext_resource type="PackedScene" uid="uid://dgr1mhqc7l4gw" path="res://citizen.tscn" id="2_6rb8a"]
 [ext_resource type="PackedScene" path="res://control.tscn" id="3_v3k7y"]
 [ext_resource type="PackedScene" uid="uid://cicgi2c20py2i" path="res://soldier.tscn" id="5_mfiqw"]
-[ext_resource type="Script" path="res://soldier_range.gd" id="6_kk8jh"]
-[ext_resource type="Texture2D" uid="uid://c0egrmiijceg6" path="res://icon.svg" id="7_mo7q0"]
+[ext_resource type="PackedScene" uid="uid://dovx70pyuy7ju" path="res://game_ui.tscn" id="6_3mqe1"]
+[ext_resource type="PackedScene" uid="uid://1q6a6ynst0c0" path="res://soldier_range.tscn" id="6_tr03k"]
 
 [sub_resource type="GDScript" id="GDScript_n7pmd"]
 script/source = "extends CharacterBody2D
@@ -34,15 +34,29 @@ func _physics_process(delta):
 	move_and_slide()
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fpva5"]
-size = Vector2(124, 124)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_y1j06"]
-radius = 500.0
-
 [node name="World" type="Node2D"]
 position = Vector2(24, -12)
 script = ExtResource("1_ceaot")
+Player = ExtResource("1_ri842")
+Citizen2 = ExtResource("2_6rb8a")
+SoldierMelee = ExtResource("5_mfiqw")
+SoldierRanged = ExtResource("6_tr03k")
+
+[node name="GameUI" parent="." instance=ExtResource("6_3mqe1")]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_vertical = 1
+script = null
+
+[node name="Inventory2" parent="." instance=ExtResource("3_v3k7y")]
+visible = false
+offset_left = 89.0
+offset_top = 160.0
+offset_right = 89.0
+offset_bottom = 160.0
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_ri842")]
 position = Vector2(80, 160)
@@ -53,34 +67,10 @@ script = SubResource("GDScript_n7pmd")
 position = Vector2(1364.7, 323.403)
 collision_layer = 3
 
-[node name="Inventory2" parent="." instance=ExtResource("3_v3k7y")]
-visible = false
-offset_left = 89.0
-offset_top = 160.0
-offset_right = 89.0
-offset_bottom = 160.0
-
 [node name="SoldierMelee" parent="." instance=ExtResource("5_mfiqw")]
 collision_layer = 3
 collision_mask = 2
+SPEED = 160.0
 
-[node name="SoldierRange2" type="CharacterBody2D" parent="."]
-script = ExtResource("6_kk8jh")
-
-[node name="CollisionShape" type="CollisionShape2D" parent="SoldierRange2"]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_fpva5")
-
-[node name="Sprite" type="Sprite2D" parent="SoldierRange2/CollisionShape"]
-position = Vector2(0, -1)
-texture = ExtResource("7_mo7q0")
-
-[node name="Muzzle" type="Marker2D" parent="SoldierRange2/CollisionShape"]
-position = Vector2(64, 0)
-
-[node name="Area2D" type="Area2D" parent="SoldierRange2"]
-
-[node name="CollisionShape" type="CollisionShape2D" parent="SoldierRange2/Area2D"]
-shape = SubResource("CircleShape2D_y1j06")
-
-[node name="ShootTimer" type="Timer" parent="SoldierRange2"]
+[node name="SoldierRange2" parent="." instance=ExtResource("6_tr03k")]
+SPEED = 160.0
