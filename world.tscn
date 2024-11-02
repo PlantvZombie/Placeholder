@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" path="res://control.tscn" id="3_v3k7y"]
 [ext_resource type="PackedScene" uid="uid://cicgi2c20py2i" path="res://soldier.tscn" id="5_mfiqw"]
 [ext_resource type="Script" path="res://soldier_range.gd" id="6_kk8jh"]
-[ext_resource type="Texture2D" uid="uid://d2bt6csy2o2df" path="res://icon.svg" id="7_mo7q0"]
+[ext_resource type="Texture2D" uid="uid://c0egrmiijceg6" path="res://icon.svg" id="7_mo7q0"]
 
 [sub_resource type="GDScript" id="GDScript_n7pmd"]
 script/source = "extends CharacterBody2D
