@@ -37,7 +37,7 @@ func _process(_delta: float) -> void:
 		var randx = random.randf_range(-100, 100) 
 		random.randomize()
 		var randy = random.randf_range(-100, 100)
-		TimeTweening = (abs(randx) + abs(randy))/100
+		TimeTweening = (abs(randx) + abs(randy))/50
 		tweening = true
 		tweenstart.emit()
 		if !FirstTween:
