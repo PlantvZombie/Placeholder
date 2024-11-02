@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var player = $"../Player"
+@onready var player = %Player
 @onready var timer = $ShootTimer
 
 @export var SPEED = 145.0
