@@ -1,7 +1,9 @@
 [gd_resource type="Theme" load_steps=4 format=3 uid="uid://dl6w3rbkh8rf7"]
 
-[ext_resource type="StyleBox" uid="uid://dx4g3upsv4vng" path="res://UI/Themes/ButtonColors/ButtonBg.tres" id="1_tql58"]
-[ext_resource type="StyleBox" uid="uid://bxh5p636unvdc" path="res://UI/Themes/ButtonColors/Pressed.tres" id="2_7p0tf"]
+[ext_resource type="Texture2D" uid="uid://ds6eon7yrt54a" path="res://UI/Images/01_Flat_Theme/Sprites/UI_Flat_InputField01a.png" id="1_cnnmd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vwh42"]
+texture = ExtResource("1_cnnmd")
 
 [sub_resource type="FontFile" id="FontFile_yx23m"]
 cache/0/40/0/ascent = 0.0
@@ -17,7 +19,5 @@ cache/0/16/0/scale = 1.0
 
 [resource]
 default_font = SubResource("FontFile_yx23m")
-Button/styles/disabled = ExtResource("1_tql58")
-Button/styles/hover = ExtResource("1_tql58")
-Button/styles/normal = ExtResource("1_tql58")
-Button/styles/pressed = ExtResource("2_7p0tf")
+Button/styles/normal = SubResource("StyleBoxTexture_vwh42")
+Button/styles/pressed = null

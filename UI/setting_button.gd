@@ -11,4 +11,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_pressed() -> void:
-	$"../../SettingUI".show()
+	#Settings show
+	$"../../../SettingBox".show()
+	#Buttons hide
+	$"../..".hide()
