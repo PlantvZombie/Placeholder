@@ -1,10 +1,20 @@
 extends Node
-
+class_name variables
+#Item Variables
 var itemname:Array
 var itemlevel:Array
 var Item:Array
+#Game
+var maxplayerhp = 100
+var playerhealth = 70
+var neededexp = 1000
+var exp = 145
 
 func _ready() -> void:
+	var maxplayerhp = 100
+	var playerhealth = 70
+	var neededexp = 1000
+	var exp = 145
 	itemname = ["Baton", "Taser"]
 	for i in itemname.size():
 		itemlevel.append(0)

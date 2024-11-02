@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddc0lpk8gihmh"
-path="res://.godot/imported/Button_Pressed.png-d974c23aea679a1bcbc4780b6f0685a6.ctex"
+uid="uid://bn8ykya5p5oqo"
+path="res://.godot/imported/UI_Hologram_Arrow_Large_01a.png-14fc69ed368c89493eb93cd5176a7169.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Button_Pressed.png"
-dest_files=["res://.godot/imported/Button_Pressed.png-d974c23aea679a1bcbc4780b6f0685a6.ctex"]
+source_file="res://GUI sprites/UI_Hologram_Arrow_Large_01a.png"
+dest_files=["res://.godot/imported/UI_Hologram_Arrow_Large_01a.png-14fc69ed368c89493eb93cd5176a7169.ctex"]
 
 [params]
 
