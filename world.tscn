@@ -1,17 +1,14 @@
-
-[gd_scene load_steps=8 format=3 uid="uid://cfbkhnsbchmqr"]
-
+[gd_scene load_steps=15 format=4 uid="uid://cfbkhnsbchmqr"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_ceaot"]
 [ext_resource type="PackedScene" uid="uid://cjh0r37iqyk3g" path="res://player.tscn" id="1_ri842"]
-[ext_resource type="PackedScene" path="res://citizen.tscn" id="2_6rb8a"]
-[ext_resource type="PackedScene" path="res://control.tscn" id="3_v3k7y"]
+[ext_resource type="PackedScene" uid="uid://dgr1mhqc7l4gw" path="res://citizen.tscn" id="2_6rb8a"]
+[ext_resource type="PackedScene" uid="uid://bvbp445scetkk" path="res://control.tscn" id="3_v3k7y"]
 [ext_resource type="PackedScene" path="res://soldier.tscn" id="5_mfiqw"]
-[ext_resource type="PackedScene" uid="uid://dovx70pyuy7ju" path="res://game_ui.tscn" id="6_3mqe1"]
+[ext_resource type="PackedScene" uid="uid://xmg823xn5t0e" path="res://game_ui.tscn" id="6_3mqe1"]
 [ext_resource type="PackedScene" path="res://soldier_range.tscn" id="6_tr03k"]
 [ext_resource type="Texture2D" uid="uid://ca5y82ec5ajw4" path="res://Images/01_Flat_Theme/Spritesheets/2_City_Terrains_16x16.png" id="8_mudyg"]
-
-
+[ext_resource type="PackedScene" uid="uid://op11vrwqqo0v" path="res://level_up_screen.tscn" id="9_esmbj"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_stkky"]
 tile_data = PackedInt32Array(0, 589825, 48, 65536, 589825, 49, 1, 655361, 48, 65537, 655361, 49)
@@ -670,7 +667,6 @@ pattern_1 = SubResource("TileMapPattern_l070i")
 [node name="World" type="Node2D"]
 position = Vector2(24, -12)
 script = ExtResource("1_ceaot")
-marker = NodePath("Player/SpawnPoint")
 
 [node name="GameUI" parent="." instance=ExtResource("6_3mqe1")]
 script = null
@@ -682,33 +678,22 @@ offset_top = 160.0
 offset_right = 89.0
 offset_bottom = 160.0
 
-
-[node name="Citizen2" parent="." groups=["Enemies"] instance=ExtResource("2_6rb8a")]
-position = Vector2(1364.7, 323.403)
-collision_layer = 3
-
 [node name="SoldierMelee" parent="." groups=["Enemies"] instance=ExtResource("5_mfiqw")]
-collision_layer = 3
-collision_mask = 2
-
 SPEED = 160.0
 
 [node name="SoldierRange2" parent="." groups=["Enemies"] instance=ExtResource("6_tr03k")]
 SPEED = 160.0
 
-
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_ri842")]
 position = Vector2(887, 571)
+collision_layer = 1
 collision_mask = 4
-
-[node name="LevelUpScreen" parent="." instance=ExtResource("8_b80gq")]
-layer = 2
-visible = false
 
 [node name="SpawnPoint" type="Marker2D" parent="Player"]
 position = Vector2(-887, -571)
 
-[node name="Citizen" parent="." instance=ExtResource("2_6rb8a")]
+[node name="Citizen" parent="." groups=["Enemies"] instance=ExtResource("2_6rb8a")]
+z_index = -1
 position = Vector2(1364.7, 323.403)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -729,3 +714,5 @@ position = Vector2(584, 532)
 scale = Vector2(-393, 297)
 texture = SubResource("PlaceholderTexture2D_8v0hj")
 
+[node name="LevelUpScreen" parent="." instance=ExtResource("9_esmbj")]
+visible = false
