@@ -1,10 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjh0r37iqyk3g"]
+[gd_scene load_steps=15 format=3 uid="uid://cjh0r37iqyk3g"]
 
 [ext_resource type="Script" path="res://StaticBody2D.gd" id="1_ttaav"]
-[ext_resource type="Texture2D" uid="uid://c0egrmiijceg6" path="res://icon.svg" id="2_my1py"]
+[ext_resource type="PackedScene" path="res://animated_sprite_2d.tscn" id="2_hecwu"]
+[ext_resource type="Texture2D" uid="uid://cammb5thuww3j" path="res://Slash_baton-Sheet.png" id="3_w2q6a"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_flcwn"]
-size = Vector2(125, 127)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4208n"]
+radius = 27.0
+height = 90.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gybbi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwvom"]
+atlas = ExtResource("3_w2q6a")
+region = Rect2(0, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prdxx"]
+atlas = ExtResource("3_w2q6a")
+region = Rect2(96, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v132f"]
+atlas = ExtResource("3_w2q6a")
+region = Rect2(192, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41e6p"]
+atlas = ExtResource("3_w2q6a")
+region = Rect2(288, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uapbq"]
+atlas = ExtResource("3_w2q6a")
+region = Rect2(384, 0, 96, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t7apa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwvom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prdxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v132f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41e6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uapbq")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usejv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eywts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rtfl"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
@@ -12,9 +65,84 @@ collision_mask = 2
 script = ExtResource("1_ttaav")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_flcwn")
+shape = SubResource("CapsuleShape2D_4208n")
 
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-texture = ExtResource("2_my1py")
+[node name="AnimatedSprite2D" parent="CollisionShape2D" instance=ExtResource("2_hecwu")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+z_index = -6
+
+[node name="R" type="Area2D" parent="."]
+
+[node name="RightAttack" type="CollisionShape2D" parent="R"]
+position = Vector2(80, 0)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_gybbi")
+disabled = true
+
+[node name="BatonRight" type="AnimatedSprite2D" parent="R/RightAttack"]
+visible = false
+position = Vector2(-7, -6)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_t7apa")
+animation = &"Attack"
+frame = 1
+frame_progress = 0.892821
+
+[node name="L" type="Area2D" parent="."]
+
+[node name="LeftAttack" type="CollisionShape2D" parent="L"]
+position = Vector2(-80, 0)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_usejv")
+disabled = true
+
+[node name="BatonLeft" type="AnimatedSprite2D" parent="L/LeftAttack"]
+visible = false
+position = Vector2(7, 6)
+rotation = 3.14159
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_t7apa")
+animation = &"Attack"
+frame = 4
+frame_progress = 0.335714
+
+[node name="D" type="Area2D" parent="."]
+
+[node name="DownAttack" type="CollisionShape2D" parent="D"]
+position = Vector2(0, 97)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_eywts")
+disabled = true
+
+[node name="BatonDown" type="AnimatedSprite2D" parent="D/DownAttack"]
+visible = false
+position = Vector2(6, -7)
+rotation = 1.5708
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_t7apa")
+animation = &"Attack"
+frame_progress = 0.0996106
+
+[node name="U" type="Area2D" parent="."]
+
+[node name="UpAttack" type="CollisionShape2D" parent="U"]
+position = Vector2(0, -97)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_7rtfl")
+disabled = true
+
+[node name="BatonUp" type="AnimatedSprite2D" parent="U/UpAttack"]
+visible = false
+position = Vector2(-6, 7)
+rotation = 4.71239
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_t7apa")
+animation = &"Attack"
+frame = 3
+frame_progress = 0.0883958
+
+[connection signal="body_entered" from="R" to="." method="_on_r_body_entered"]
+[connection signal="body_entered" from="L" to="." method="_on_l_body_entered"]
+[connection signal="body_entered" from="D" to="." method="_on_d_body_entered"]
+[connection signal="body_entered" from="U" to="." method="_on_u_body_entered"]

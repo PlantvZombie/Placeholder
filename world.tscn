@@ -682,16 +682,28 @@ offset_top = 160.0
 offset_right = 89.0
 offset_bottom = 160.0
 
-[node name="SoldierMelee" parent="." instance=ExtResource("5_mfiqw")]
+
+[node name="Citizen2" parent="." groups=["Enemies"] instance=ExtResource("2_6rb8a")]
+position = Vector2(1364.7, 323.403)
+collision_layer = 3
+
+[node name="SoldierMelee" parent="." groups=["Enemies"] instance=ExtResource("5_mfiqw")]
+collision_layer = 3
+collision_mask = 2
+
 SPEED = 160.0
 
-[node name="SoldierRange2" parent="." instance=ExtResource("6_tr03k")]
+[node name="SoldierRange2" parent="." groups=["Enemies"] instance=ExtResource("6_tr03k")]
 SPEED = 160.0
 
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_ri842")]
 position = Vector2(887, 571)
 collision_mask = 4
+
+[node name="LevelUpScreen" parent="." instance=ExtResource("8_b80gq")]
+layer = 2
+visible = false
 
 [node name="SpawnPoint" type="Marker2D" parent="Player"]
 position = Vector2(-887, -571)
