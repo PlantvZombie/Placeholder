@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-@onready var player = $"../Player"
+
+var player
+
 @onready var timer = $ShootTimer
 
 @export var SPEED = 145.0
@@ -14,10 +16,15 @@ var expgiven:int = 500
 var canShoot = true
 var canMove = true
 var player_position
-
+var i
 
 
 func _ready() -> void:
+	var playerS = get_parent().get_children()
+	for i in playerS:
+		if i.is_in_group("player"):
+			player = i
+			break
 	timer.wait_time = firerate
 
 func _physics_process(delta: float) -> void:
