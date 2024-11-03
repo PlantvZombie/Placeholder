@@ -88,6 +88,11 @@ test={
 ]
 }
 
+[physics]
+
+common/physics_ticks_per_second=180
+common/max_physics_steps_per_frame=24
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

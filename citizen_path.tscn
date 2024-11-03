@@ -1,4 +1,9 @@
-extends CharacterBody2D
+[gd_scene load_steps=4 format=3 uid="uid://bqofn3mg38ey4"]
+
+[ext_resource type="Texture2D" uid="uid://c0egrmiijceg6" path="res://icon.svg" id="2_xb8x7"]
+
+[sub_resource type="GDScript" id="GDScript_wfs30"]
+script/source = "extends CharacterBody2D
 
 var random = RandomNumberGenerator.new()
 var cower:bool = false
@@ -13,13 +18,13 @@ var Hp:int = 20
 var expgiven:int = 100
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group(\"player\"):
 		random.randomize()
 		var randnum = random.randi_range(0, 100)
 		if randnum < 41:
 			run = true
-			var direction = Input.get_axis("left", "right")
-			var direction2 = Input.get_axis("up", "down")
+			var direction = Input.get_axis(\"left\", \"right\")
+			var direction2 = Input.get_axis(\"up\", \"down\")
 			if direction or direction2:
 				velocity.x = direction * SPEED
 				velocity.y = direction2 * SPEED
@@ -42,12 +47,12 @@ func _process(_delta: float) -> void:
 		tweenstart.emit()
 		if !FirstTween:
 			tween = create_tween()
-		tween.tween_property(self, "position", Vector2(position.x + randx, position.y + randy), TimeTweening)
+		tween.tween_property(self, \"position\", Vector2(position.x + randx, position.y + randy), TimeTweening)
 		FirstTween = false
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.name == \"Player\":
 		cower = false
 		run = false
 
@@ -55,3 +60,17 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_tweenstart() -> void:
 	await get_tree().create_timer(TimeTweening).timeout
 	tweening = false
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ral70"]
+
+[node name="CitizenPath" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 2
+script = SubResource("GDScript_wfs30")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xb8x7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ral70")
