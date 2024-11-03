@@ -11,7 +11,12 @@ signal tweenstart
 var FirstTween:bool = true
 var Hp:int = 20
 var expgiven:int = 100
+
+var colors = [["Gwalk", "Gidle", "Gdeath"],["Rwalk","Ridle" ,"Rdeath"]]
+var colornum = random.randi_range(0, 1)
+@onready var anim = $CollisionShape2D/AnimatedSprite2D
 var stunned:bool = false
+
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -24,12 +29,15 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			if (direction or direction2) and !stunned:
 				velocity.x = direction * SPEED
 				velocity.y = direction2 * SPEED
+				anim.play(colors[colornum][0])
 				if sqrt(pow(velocity.x, 2) + pow(velocity.y, 2)) > SPEED: 
 					velocity.x = direction * SPEED * (sqrt(2)/2)
 					velocity.y = direction2 * SPEED * (sqrt(2)/2)
 		elif randnum > 40:
 			cower = true
-
+			anim.play(colors[colornum][1])
+	else:
+		anim.play(colors[colornum][1])
 func _process(_delta: float) -> void:
 	if run:
 		move_and_slide()
