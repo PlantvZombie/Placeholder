@@ -5,6 +5,7 @@ var player
 
 @onready var timer = $ShootTimer
 
+@onready var anim = $CollisionShape/AnimatedSprite2D
 @export var SPEED = 145.0
 @export var SLOW_SPEED = 0.6
 @export var firerate = 2.5
@@ -31,15 +32,23 @@ func _physics_process(delta: float) -> void:
 	if canMove == true:
 		player_position = player.position
 		if position.distance_to(player_position) >= 10:
+			anim.play("Walk")
 			velocity = position.direction_to(player_position) * SPEED
 			if position.distance_to(player_position) < 10:
+				anim.play("Idle")
 				velocity = Vector2.ZERO
 	elif canMove == false:
 		player_position = player.position
 		if position.distance_to(player_position) >= 10:
 			velocity = position.direction_to(player_position) * (SPEED * SLOW_SPEED)
+			anim.play("Walk")
 			if position.distance_to(player_position) < 10:
 				velocity = Vector2.ZERO
+				anim.play("Idle")
+		if position.direction_to(player_position).x/abs(position.direction_to(player_position).x) == 1:
+			$CollisionShape/AnimatedSprite2D.set_flip_h(false)
+		else:
+			$CollisionShape/AnimatedSprite2D.set_flip_h(true)
 	move_and_slide()
 
 
