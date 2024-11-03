@@ -1,4 +1,6 @@
-[gd_scene load_steps=15 format=4 uid="uid://cfbkhnsbchmqr"]
+
+[gd_scene load_steps=8 format=3 uid="uid://cfbkhnsbchmqr"]
+
 
 [ext_resource type="Script" path="res://world.gd" id="1_ceaot"]
 [ext_resource type="PackedScene" uid="uid://cjh0r37iqyk3g" path="res://player.tscn" id="1_ri842"]
@@ -9,8 +11,8 @@
 [ext_resource type="PackedScene" path="res://soldier_range.tscn" id="6_tr03k"]
 [ext_resource type="Texture2D" uid="uid://ca5y82ec5ajw4" path="res://Images/01_Flat_Theme/Spritesheets/2_City_Terrains_16x16.png" id="8_mudyg"]
 
-[sub_resource type="GDScript" id="GDScript_n7pmd"]
-script/source = "extends CharacterBody2D
+
+
 
 
 const SPEED = 300.0
@@ -692,10 +694,7 @@ pattern_1 = SubResource("TileMapPattern_l070i")
 [node name="World" type="Node2D"]
 position = Vector2(24, -12)
 script = ExtResource("1_ceaot")
-Player = ExtResource("1_ri842")
-Citizen2 = ExtResource("2_6rb8a")
-SoldierMelee = ExtResource("5_mfiqw")
-SoldierRanged = ExtResource("6_tr03k")
+marker = NodePath("Player/SpawnPoint")
 
 [node name="GameUI" parent="." instance=ExtResource("6_3mqe1")]
 script = null
@@ -707,23 +706,23 @@ offset_top = 160.0
 offset_right = 89.0
 offset_bottom = 160.0
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("1_ri842")]
-position = Vector2(80, 160)
-collision_mask = 4
-script = SubResource("GDScript_n7pmd")
-
-[node name="Citizen2" parent="." instance=ExtResource("2_6rb8a")]
-position = Vector2(1364.7, 323.403)
-collision_layer = 3
-
 [node name="SoldierMelee" parent="." instance=ExtResource("5_mfiqw")]
-collision_layer = 3
-collision_mask = 2
 SPEED = 160.0
 
 [node name="SoldierRange2" parent="." instance=ExtResource("6_tr03k")]
 SPEED = 160.0
 
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_ri842")]
+position = Vector2(887, 571)
+collision_mask = 4
+
+[node name="SpawnPoint" type="Marker2D" parent="Player"]
+position = Vector2(-887, -571)
+
+[node name="Citizen" parent="." instance=ExtResource("2_6rb8a")]
+position = Vector2(1364.7, 323.403)
+=======
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2(4, 4)
 transform = Transform2D(4, 0, 0, 4, 0, 0)
@@ -741,3 +740,4 @@ tile_set = SubResource("TileSet_kwpcf")
 position = Vector2(584, 532)
 scale = Vector2(-393, 297)
 texture = SubResource("PlaceholderTexture2D_8v0hj")
+
