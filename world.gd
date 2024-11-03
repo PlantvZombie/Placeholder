@@ -16,7 +16,7 @@ extends Node2D
 @export var amount = 1
 @export_subgroup("Extra Properties")
 @export var spawnTimer:Timer
-
+var rng = RandomNumberGenerator.new()
 
 
 var spawnEnemies = true
@@ -25,7 +25,7 @@ var enemyPerWave
 
 func _ready() -> void:
 	get_node("Inventory2").set_visible(false)
-	
+	Firewall()
 
 func _process(_delta: float) -> void:
 	################################################################################################
@@ -79,3 +79,12 @@ func _process(_delta: float) -> void:
 	elif Input.is_action_just_pressed("esc"):
 		get_node("Inventory2").set_visible(false)
 	get_node("Inventory2").position = get_node("Player").position
+
+
+func Firewall():
+	while Global.Attacks > 0:
+		await get_tree().create_timer(600*pow(0.33, 1.16454726043*Global.itemlevel[4])).timeout
+		rng.randomize()
+		var enemies = get_tree().get_nodes_in_group("Enemies")
+		var person = rng.randi_range(0, enemies.size()-1)
+		enemies[person].Hp = 0

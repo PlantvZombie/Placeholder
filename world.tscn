@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=15 format=4 uid="uid://cfbkhnsbchmqr"]
-
+[gd_scene load_steps=16 format=4 uid="uid://cfbkhnsbchmqr"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_ceaot"]
 [ext_resource type="PackedScene" uid="uid://cjh0r37iqyk3g" path="res://player.tscn" id="1_ri842"]
@@ -683,7 +681,6 @@ offset_top = 160.0
 offset_right = 89.0
 offset_bottom = 160.0
 
-
 [node name="SoldierMelee" parent="." groups=["Enemies"] instance=ExtResource("5_mfiqw")]
 SPEED = 160.0
 
@@ -693,10 +690,7 @@ SPEED = 160.0
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_ri842")]
 z_index = 5
 position = Vector2(887, 571)
-
-collision_layer = 1
 collision_mask = 3
-
 
 [node name="SpawnPoint" type="Marker2D" parent="Player"]
 position = Vector2(-887, -571)
@@ -713,13 +707,13 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_7ikhq")
 
-[node name="SoldierMelee" parent="." instance=ExtResource("5_mfiqw")]
+[node name="SoldierMelee2" parent="." groups=["Enemies"] instance=ExtResource("5_mfiqw")]
 SPEED = 160.0
 
-[node name="SoldierRange2" parent="." instance=ExtResource("6_tr03k")]
+[node name="SoldierRange3" parent="." groups=["Enemies"] instance=ExtResource("6_tr03k")]
 SPEED = 160.0
 
-[node name="Citizen" parent="." instance=ExtResource("2_6rb8a")]
+[node name="Citizen" parent="." groups=["Enemies"] instance=ExtResource("2_6rb8a")]
 position = Vector2(1364.7, 323.403)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
