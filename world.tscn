@@ -698,7 +698,7 @@ position = Vector2(-887, -571)
 
 [node name="Citizen" parent="." instance=ExtResource("2_6rb8a")]
 position = Vector2(1364.7, 323.403)
-=======
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2(4, 4)
 transform = Transform2D(4, 0, 0, 4, 0, 0)
