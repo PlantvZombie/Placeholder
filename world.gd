@@ -31,4 +31,3 @@ func _process(_delta: float) -> void:
 	elif Input.is_action_just_pressed("esc"):
 		get_node("Inventory2").set_visible(false)
 	get_node("Inventory2").position = get_node("Player").position
-	
