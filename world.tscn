@@ -1,20 +1,17 @@
 [gd_scene load_steps=8 format=3 uid="uid://cfbkhnsbchmqr"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_ceaot"]
-[ext_resource type="PackedScene" uid="uid://cjh0r37iqyk3g" path="res://player.tscn" id="1_ri842"]
-[ext_resource type="PackedScene" uid="uid://bwofri56wum6p" path="res://citizen.tscn" id="2_6rb8a"]
+[ext_resource type="PackedScene" uid="uid://dyeirwvcaeq7d" path="res://player.tscn" id="1_ri842"]
+[ext_resource type="PackedScene" uid="uid://dgr1mhqc7l4gw" path="res://citizen.tscn" id="2_6rb8a"]
 [ext_resource type="PackedScene" uid="uid://bvbp445scetkk" path="res://control.tscn" id="3_v3k7y"]
-[ext_resource type="PackedScene" path="res://soldier.tscn" id="5_mfiqw"]
-[ext_resource type="PackedScene" path="res://game_ui.tscn" id="6_3mqe1"]
-[ext_resource type="PackedScene" path="res://soldier_range.tscn" id="6_tr03k"]
+[ext_resource type="PackedScene" uid="uid://cicgi2c20py2i" path="res://soldier.tscn" id="5_mfiqw"]
+[ext_resource type="PackedScene" uid="uid://dovx70pyuy7ju" path="res://game_ui.tscn" id="6_3mqe1"]
+[ext_resource type="PackedScene" uid="uid://1q6a6ynst0c0" path="res://soldier_range.tscn" id="6_tr03k"]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" node_paths=PackedStringArray("marker")]
 position = Vector2(24, -12)
 script = ExtResource("1_ceaot")
-Player = ExtResource("1_ri842")
-Citizen2 = ExtResource("2_6rb8a")
-SoldierMelee = ExtResource("5_mfiqw")
-SoldierRanged = ExtResource("6_tr03k")
+marker = NodePath("Player/SpawnPoint")
 
 [node name="GameUI" parent="." instance=ExtResource("6_3mqe1")]
 script = null
@@ -26,13 +23,7 @@ offset_top = 160.0
 offset_right = 89.0
 offset_bottom = 160.0
 
-[node name="Citizen2" parent="." instance=ExtResource("2_6rb8a")]
-position = Vector2(1364.7, 323.403)
-collision_layer = 3
-
 [node name="SoldierMelee" parent="." instance=ExtResource("5_mfiqw")]
-collision_layer = 3
-collision_mask = 2
 SPEED = 160.0
 
 [node name="SoldierRange2" parent="." instance=ExtResource("6_tr03k")]
@@ -41,3 +32,9 @@ SPEED = 160.0
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_ri842")]
 position = Vector2(887, 571)
 collision_mask = 4
+
+[node name="SpawnPoint" type="Marker2D" parent="Player"]
+position = Vector2(-887, -571)
+
+[node name="Citizen" parent="." instance=ExtResource("2_6rb8a")]
+position = Vector2(1364.7, 323.403)
