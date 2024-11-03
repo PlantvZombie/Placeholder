@@ -1,19 +1,17 @@
-
-[gd_scene load_steps=15 format=4 uid="uid://cfbkhnsbchmqr"]
-
+[gd_scene load_steps=16 format=4 uid="uid://cfbkhnsbchmqr"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_ceaot"]
-[ext_resource type="PackedScene" uid="uid://cjh0r37iqyk3g" path="res://player.tscn" id="1_ri842"]
+[ext_resource type="PackedScene" uid="uid://dyeirwvcaeq7d" path="res://player.tscn" id="1_ri842"]
 [ext_resource type="PackedScene" uid="uid://dgr1mhqc7l4gw" path="res://citizen.tscn" id="2_6rb8a"]
 [ext_resource type="PackedScene" uid="uid://bvbp445scetkk" path="res://control.tscn" id="3_v3k7y"]
-[ext_resource type="PackedScene" path="res://soldier.tscn" id="5_mfiqw"]
-[ext_resource type="PackedScene" uid="uid://xmg823xn5t0e" path="res://game_ui.tscn" id="6_3mqe1"]
-[ext_resource type="PackedScene" path="res://soldier_range.tscn" id="6_tr03k"]
+[ext_resource type="PackedScene" uid="uid://cicgi2c20py2i" path="res://soldier.tscn" id="5_mfiqw"]
+[ext_resource type="PackedScene" uid="uid://dovx70pyuy7ju" path="res://game_ui.tscn" id="6_3mqe1"]
+[ext_resource type="PackedScene" uid="uid://1q6a6ynst0c0" path="res://soldier_range.tscn" id="6_tr03k"]
 [ext_resource type="Texture2D" uid="uid://ca5y82ec5ajw4" path="res://Images/01_Flat_Theme/Spritesheets/2_City_Terrains_16x16.png" id="8_mudyg"]
 [ext_resource type="PackedScene" uid="uid://op11vrwqqo0v" path="res://level_up_screen.tscn" id="9_esmbj"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7ikhq"]
-size = Vector2(50, 100)
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tsf3q"]
+size = Vector2(50, 50)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_stkky"]
 tile_data = PackedInt32Array(0, 589825, 48, 65536, 589825, 49, 1, 655361, 48, 65537, 655361, 49)
@@ -669,12 +667,31 @@ pattern_1 = SubResource("TileMapPattern_l070i")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8v0hj"]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" node_paths=PackedStringArray("spawnTimer")]
 position = Vector2(24, -12)
 script = ExtResource("1_ceaot")
+spawnTimer = NodePath("Timer")
 
 [node name="GameUI" parent="." instance=ExtResource("6_3mqe1")]
 script = null
+
+[node name="SpawnPoint" type="Marker2D" parent="GameUI"]
+
+[node name="TextureRect" type="TextureRect" parent="GameUI/SpawnPoint"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 887.0
+offset_top = 571.0
+offset_right = 937.0
+offset_bottom = 671.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("PlaceholderTexture2D_tsf3q")
 
 [node name="Inventory2" parent="." instance=ExtResource("3_v3k7y")]
 visible = false
@@ -682,7 +699,6 @@ offset_left = 89.0
 offset_top = 160.0
 offset_right = 89.0
 offset_bottom = 160.0
-
 
 [node name="SoldierMelee" parent="." groups=["Enemies"] instance=ExtResource("5_mfiqw")]
 SPEED = 160.0
@@ -693,36 +709,19 @@ SPEED = 160.0
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_ri842")]
 z_index = 5
 position = Vector2(887, 571)
-
-collision_layer = 1
 collision_mask = 3
 
-
-[node name="SpawnPoint" type="Marker2D" parent="Player"]
-position = Vector2(-887, -571)
-
-[node name="TextureRect" type="TextureRect" parent="Player/SpawnPoint"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -25.0
-offset_top = -50.0
-offset_right = 25.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_7ikhq")
-
-[node name="SoldierMelee" parent="." instance=ExtResource("5_mfiqw")]
+[node name="SoldierMelee2" parent="." instance=ExtResource("5_mfiqw")]
 SPEED = 160.0
 
-[node name="SoldierRange2" parent="." instance=ExtResource("6_tr03k")]
+[node name="SoldierRange3" parent="." instance=ExtResource("6_tr03k")]
 SPEED = 160.0
 
 [node name="Citizen" parent="." instance=ExtResource("2_6rb8a")]
 position = Vector2(1364.7, 323.403)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 scale = Vector2(4, 4)
 transform = Transform2D(4, 0, 0, 4, 0, 0)
 
@@ -742,3 +741,8 @@ texture = SubResource("PlaceholderTexture2D_8v0hj")
 
 [node name="LevelUpScreen" parent="." instance=ExtResource("9_esmbj")]
 visible = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -18,7 +18,7 @@ extends Node2D
 @export var spawnTimer:Timer
 
 
-
+var EnemyType = CitizenPath
 var spawnEnemies = true
 var spawnLocation
 var enemyPerWave
@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 		spawnY = 0
 	elif side == 2:
 		#RightSide
-		offset = Vector2(0,100)
+		offset = Vector2(0,50)
 		spawnX = view.x
 		spawnY = randi_range(0, view.y)
 	elif side == 3:
@@ -56,19 +56,12 @@ func _process(_delta: float) -> void:
 		spawnY = view.y
 	elif side == 4:
 		#LeftSide
-		offset = Vector2(0,-100)
+		offset = Vector2(0,-50)
 		spawnX = 0
 		spawnY = randi_range(0, view.y)
-	marker.position = view + Vector2i(spawnX,spawnY)
-	var timer = Timer.new()
-	timer.start(1)
-	if timer.is_stopped() == false:
-		var instance = CitizenPath.instantiate()
-		instance.position = Player.position
-		add_child(instance)
-	
-	if timer.wait_time <= 0:
-		timer.stop()
+	marker.position = (view * -1.2) + (Vector2(spawnX,spawnY) * 2)
+	if spawnTimer.is_stopped():
+		spawnTimer.start(1)
 	
 	################################################################################################
 	#                                      Input                                                   #
@@ -79,3 +72,10 @@ func _process(_delta: float) -> void:
 	elif Input.is_action_just_pressed("esc"):
 		get_node("Inventory2").set_visible(false)
 	get_node("Inventory2").position = get_node("Player").position
+
+
+func _on_timer_timeout() -> void:
+		var instance = EnemyType.instantiate()
+		instance.position = marker.position
+		add_child(instance)
+		spawnTimer.stop()
