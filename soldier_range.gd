@@ -11,6 +11,7 @@ var player
 @export var Bullet : PackedScene
 var Hp:int = 50
 var expgiven:int = 500
+var stunned:bool = false
 
 
 var canShoot = true
@@ -28,18 +29,20 @@ func _ready() -> void:
 	timer.wait_time = firerate
 
 func _physics_process(delta: float) -> void:
-	if canMove == true:
+	if canMove and !stunned:
 		player_position = player.position
 		if position.distance_to(player_position) >= 10:
 			velocity = position.direction_to(player_position) * SPEED
 			if position.distance_to(player_position) < 10:
 				velocity = Vector2.ZERO
-	elif canMove == false:
+	elif !canMove and !stunned:
 		player_position = player.position
 		if position.distance_to(player_position) >= 10:
 			velocity = position.direction_to(player_position) * (SPEED * SLOW_SPEED)
 			if position.distance_to(player_position) < 10:
 				velocity = Vector2.ZERO
+	if stunned:
+		velocity = Vector2.ZERO
 	move_and_slide()
 
 
