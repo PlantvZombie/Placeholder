@@ -26,10 +26,11 @@ func _physics_process(delta):
 		Global.Attacks = Global.Attacks + Global.itemlevel[3]
 		if Global.Attacks >= 3:
 			Global.Attacks = 3
-		get_node("D/DownAttack").set_scale(5*Global.itemlevel[0])
-		get_node("L/LeftAttack").set_scale(5*Global.itemlevel[0])
-		get_node("R/RightAttack").set_scale(5*Global.itemlevel[0])
-		get_node("U/UpAttack").set_scale(5*Global.itemlevel[0])
+		get_node("D/DownAttack").set_scale(Vector2(5*Global.itemlevel[0], 5*Global.itemlevel[0]))
+		get_node("L/LeftAttack").set_scale(Vector2(5*Global.itemlevel[0], 5*Global.itemlevel[0]))
+		get_node("R/RightAttack").set_scale(Vector2(5*Global.itemlevel[0], 5*Global.itemlevel[0]))
+		get_node("U/UpAttack").set_scale(Vector2(5*Global.itemlevel[0], 5*Global.itemlevel[0]))
+		print(Global.itemlevel[0])
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("left", "right")
