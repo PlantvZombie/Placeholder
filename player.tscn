@@ -83,7 +83,6 @@ shape = SubResource("RectangleShape2D_gybbi")
 disabled = true
 
 [node name="BatonRight" type="AnimatedSprite2D" parent="R/RightAttack"]
-visible = false
 position = Vector2(-7, -6)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_t7apa")
