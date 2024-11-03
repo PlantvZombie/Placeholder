@@ -11,6 +11,7 @@ signal tweenstart
 var FirstTween:bool = true
 var Hp:int = 20
 var expgiven:int = 100
+var stunned:bool = false
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
@@ -20,7 +21,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			run = true
 			var direction = Input.get_axis("left", "right")
 			var direction2 = Input.get_axis("up", "down")
-			if direction or direction2:
+			if (direction or direction2) and !stunned:
 				velocity.x = direction * SPEED
 				velocity.y = direction2 * SPEED
 				if sqrt(pow(velocity.x, 2) + pow(velocity.y, 2)) > SPEED: 
@@ -32,7 +33,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _process(_delta: float) -> void:
 	if run:
 		move_and_slide()
-	elif !run and !cower and !tweening:
+	elif !run and !cower and !tweening and !stunned:
 		random.randomize()
 		var randx = random.randi_range(-100, 100) 
 		random.randomize()
