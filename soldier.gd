@@ -16,5 +16,5 @@ func _physics_process(delta: float) -> void:
 		if position.distance_to(player_position) < 10:
 			velocity = Vector2.ZERO
 	if stunned:
-		velocitssy = Vector2.ZERO
+		velocity = Vector2.ZERO
 	move_and_slide()
