@@ -15,6 +15,7 @@ var StunDuration
 var DroneCooldown
 var Attacks = 1
 var DeleteCooldown
+var level = 0
 
 func _ready() -> void:
 	for i in itemname.size():
@@ -30,6 +31,7 @@ func _process(_delta: float) -> void:
 	if leveled:
 		Level()
 		leveled = false
+		level += 1
 		#Engine.time_scale = 1
 	if exp >= neededexp:
 		#Engine.time_scale = 0

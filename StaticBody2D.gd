@@ -17,6 +17,7 @@ var uattack:bool
 func _ready() -> void:
 	get_node("Camera2D").set_block_signals(false)
 	AttackingStuff()
+	StunningCooldown()
 
 func _physics_process(delta):
 	if Global.leveled:
@@ -25,6 +26,11 @@ func _physics_process(delta):
 		Global.Attacks = Global.Attacks + Global.itemlevel[3]
 		if Global.Attacks >= 3:
 			Global.Attacks = 3
+		get_node("D/DownAttack").set_scale(Vector2(5*Global.itemlevel[0], 5*Global.itemlevel[0]))
+		get_node("L/LeftAttack").set_scale(Vector2(5*Global.itemlevel[0], 5*Global.itemlevel[0]))
+		get_node("R/RightAttack").set_scale(Vector2(5*Global.itemlevel[0], 5*Global.itemlevel[0]))
+		get_node("U/UpAttack").set_scale(Vector2(5*Global.itemlevel[0], 5*Global.itemlevel[0]))
+		print(Global.itemlevel[0])
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("left", "right")
@@ -138,3 +144,19 @@ func _on_u_body_entered(body: Node2D) -> void:
 			Global.exp += body.expgiven
 			body.queue_free()
 		#PlayerAttack.emit()
+
+func StunningCooldown():
+	while Global.Attacks > 0:
+		await get_tree().create_timer(10).timeout
+		get_node("Taser/Range").set_disabled(false)
+		await get_tree().create_timer(0.1).timeout
+		get_node("Taser/Range").set_disabled(true)
+
+
+func _on_taser_body_entered(body: Node2D) -> void:
+	print("working")
+	if body.is_in_group("Enemies"):
+		body.stunned = true
+		await get_tree().create_timer(Global.itemlevel[1]).timeout
+		if body.Hp > 0:
+			body.stunned = false

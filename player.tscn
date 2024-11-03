@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjh0r37iqyk3g"]
+[gd_scene load_steps=16 format=3 uid="uid://cjh0r37iqyk3g"]
 
 [ext_resource type="Script" path="res://StaticBody2D.gd" id="1_ttaav"]
 [ext_resource type="PackedScene" uid="uid://363wijixgajt" path="res://animated_sprite_2d.tscn" id="2_hecwu"]
@@ -58,6 +58,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eywts"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7rtfl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ffxlu"]
+radius = 225.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 4
@@ -141,7 +144,14 @@ animation = &"Attack"
 frame = 3
 frame_progress = 0.0883958
 
+[node name="Taser" type="Area2D" parent="."]
+
+[node name="Range" type="CollisionShape2D" parent="Taser"]
+shape = SubResource("CircleShape2D_ffxlu")
+disabled = true
+
 [connection signal="body_entered" from="R" to="." method="_on_r_body_entered"]
 [connection signal="body_entered" from="L" to="." method="_on_l_body_entered"]
 [connection signal="body_entered" from="D" to="." method="_on_d_body_entered"]
 [connection signal="body_entered" from="U" to="." method="_on_u_body_entered"]
+[connection signal="body_entered" from="Taser" to="." method="_on_taser_body_entered"]
