@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cvrtcgshtrv21"]
+[gd_scene load_steps=39 format=3 uid="uid://dgr1mhqc7l4gw"]
 
 [ext_resource type="Script" path="res://citizen.gd" id="1_erkt4"]
 [ext_resource type="Texture2D" uid="uid://bek2u8nmb7xf5" path="res://Images/01_Flat_Theme/Spritesheets/G-Sheet.png" id="2_auje5"]

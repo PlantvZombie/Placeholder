@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 
 	if stunned:
 		velocity = Vector2.ZERO
-    anim.play("Idle")
+	anim.play("Idle")
 
 	move_and_slide()
 

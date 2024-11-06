@@ -1,7 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://bmg30vjrwrnwe"]
+[gd_scene load_steps=23 format=3 uid="uid://1q6a6ynst0c0"]
 
 [ext_resource type="Script" path="res://soldier_range.gd" id="1_gtq32"]
-[ext_resource type="PackedScene" uid="uid://csbx33w4juoe4" path="res://bullet.tscn" id="2_18lu7"]
+[ext_resource type="PackedScene" uid="uid://b62fl11prx0mf" path="res://bullet.tscn" id="2_18lu7"]
 [ext_resource type="Texture2D" uid="uid://ddxik0ncj1p31" path="res://Images/01_Flat_Theme/Spritesheets/S-Sheet.png" id="3_t8bsx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fpva5"]

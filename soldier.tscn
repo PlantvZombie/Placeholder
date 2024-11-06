@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://8wa2ghvypmry"]
+[gd_scene load_steps=17 format=3 uid="uid://cicgi2c20py2i"]
 
 [ext_resource type="Script" path="res://soldier.gd" id="1_v8nes"]
 [ext_resource type="Texture2D" uid="uid://ddxik0ncj1p31" path="res://Images/01_Flat_Theme/Spritesheets/S-Sheet.png" id="2_paelm"]
